@@ -73,10 +73,10 @@
 #define KEY_GESTURE_DOWN_ARROW      252
 #define KEY_GESTURE_LEFT_ARROW      253
 #define KEY_GESTURE_RIGHT_ARROW     254
-#define KEY_GESTURE_SWIPE_UP        255
-#define KEY_GESTURE_SWIPE_DOWN      256
-#define KEY_GESTURE_SWIPE_LEFT      257
-#define KEY_GESTURE_SWIPE_RIGHT     258
+#define KEY_GESTURE_SWIPE_UP        KEY_F8
+#define KEY_GESTURE_SWIPE_DOWN      KEY_F6
+#define KEY_GESTURE_SWIPE_LEFT      KEY_F5
+#define KEY_GESTURE_SWIPE_RIGHT     KEY_F7
 #define KEY_GESTURE_SINGLE_TAP      KEY_F9
 #define FingerprintDown     14
 #define FingerprintUp       15
