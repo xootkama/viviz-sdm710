@@ -765,8 +765,8 @@ static int qpnp_haptics_play(struct hap_chip *chip, bool enable)
 		#ifdef CONFIG_PRODUCT_REALME_SDM710
 		time_ms = time_ms < chip->time_min ?
 		chip->time_min : time_ms;
-		pr_err("vib on = %d, enable is %d\n", time_ms, enable);
-		#endif/*CONFIG_PRODUCT_REALME_SDM710*/
+		pr_debug("vib on = %d, enable is %d\n", time_ms, enable);
+		#endif/*VENDOR_EDIT*/
 		hrtimer_start(&chip->stop_timer,
 			ktime_set(time_ms / MSEC_PER_SEC,
 			(time_ms % MSEC_PER_SEC) * NSEC_PER_MSEC),
@@ -783,9 +783,10 @@ static int qpnp_haptics_play(struct hap_chip *chip, bool enable)
 				ktime_set(0, AUTO_RES_ERR_POLL_TIME_NS),
 				HRTIMER_MODE_REL);
 	} else {
-		#ifdef CONFIG_PRODUCT_REALME_SDM710
-		pr_err("vib enable is %d\n", enable);
-		#endif/*CONFIG_PRODUCT_REALME_SDM710*/
+		#ifdef VENDOR_EDIT
+		//Added by wanghao@Bsp.group.Tp for vib min time setting,2018/5/17
+		pr_debug("vib enable is %d\n", enable);
+		#endif/*VENDOR_EDIT*/
 		rc = qpnp_haptics_play_control(chip, HAP_STOP);
 		if (rc < 0) {
 			pr_err("Error in disabling play, rc=%d\n", rc);
