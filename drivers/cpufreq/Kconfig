@@ -187,6 +187,18 @@ config CPU_FREQ_DEFAULT_GOV_INTELLIACTIVE
  	    > Checks for offline cpus and short circuits some unnecessary checks to
  	      improve code execution paths
 
+config CPU_FREQ_DEFAULT_GOV_PMC
+	bool "PMC"
+ 	select CPU_FREQ_GOV_PMC
+ 	help
+ 	  Use the CPUFreq governor 'pmc' as default.
+ 	  Based off Google's Interactive governor with the following enhancements:
+ 	    > self-boost capability from input drivers (no need for PowerHAL assist)
+ 	    > two phase scheduling (idle/busy phases to prevent from jumping directly
+ 	      to max freq
+ 	    > Checks for offline cpus and short circuits some unnecessary checks to
+ 	      improve code execution paths
+
 config CPU_FREQ_DEFAULT_GOV_SMARTMAX_EPS
  	bool "smartmax_eps"
  	select CPU_FREQ_GOV_SMARTMAX_EPS
@@ -380,6 +392,17 @@ config CPU_FREQ_GOV_BIOSHOCK
 	  'bioshock' - More aggressive version of conservative
 
 config CPU_FREQ_GOV_INTELLIACTIVE
+	tristate "'intelliactive' governor"
+	help
+	  This cpufreq governor sets the frequency statically to the
+	  highest available CPU frequency.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called cpufreq_intelliactive.
+
+	  If in doubt, say Y.
+
+config CPU_FREQ_GOV_PMC
 	tristate "'intelliactive' governor"
 	help
 	  This cpufreq governor sets the frequency statically to the
